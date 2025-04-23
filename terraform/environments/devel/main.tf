@@ -5,7 +5,7 @@ terraform {
       version = "=3.0.1"
     }
   }
-  backend "s3" {
+  backend "azurerm" {
     resource_group_name = "tfstate-rg"
     storage_account_name = "tfstatefullstack"
     container_name = "tfstate"
