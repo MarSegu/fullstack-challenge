@@ -1,5 +1,9 @@
-# In this file put the variables related to the deployment
- variable "variable_name" {
-     type = "type",
-     description = "Description"
+# In this file put all the logic to crete the proper infraestructure
+ terraform {
+     required_providers {
+         # Add the provideres according to the challenges
+     }
  }
+ 
+ 
+ # Add the resources relatedo to the provider
