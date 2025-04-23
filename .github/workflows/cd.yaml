@@ -1,0 +1,41 @@
+name: CI Pipeline
+ 
+on: 
+  push:
+    branches: [ devel, stage, prod ]
+
+jobs:
+  terraform-apply:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./terraform/environments/${{ github.ref_name }}
+
+    env:
+      ARM_CLIENT_ID: "${{ secrets.ARM_CLIENT_ID }}"
+      ARM_SUBSCRIPTION_ID: "${{ secrets.ARM_SUBSCRIPTION_ID }}"
+      ARM_TENANT_ID: "${{ secrets.ARM_TENANT_ID }}"
+      ARM_CLIENT_SECRET: "${{ secrets.ARM_CLIENT_SECRET }}"
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Terraform Set up
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.1.7"
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform Plan
+      
+      - name: Terraform Apply
+        run: terraform apply --auto-aproved

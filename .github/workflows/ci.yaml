@@ -12,6 +12,18 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: branching strategy
+        if: github.event == 'pull_request'
+        run: |
+          if [[ "${{ github.event.pull_request.base.ref }}" == "stage" && "${{ github.event.pull_request.head.ref }}" != "devel" ]] then
+            echo "Merge into stage can only be done from devel
+            exit 1
+          fi
+          if [[ "${{ github.event.pull_request.base.ref }}" == "prod" && "${{ github.event.pull_request.head.ref }}" != "stage" ]] then
+            echo "Merge into prod can only be done from stage
+            exit 1
+          fi
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
