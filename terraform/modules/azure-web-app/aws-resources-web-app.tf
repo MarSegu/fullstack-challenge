@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "web_app_rg" {
 }
 
 resource "azurerm_storage_account" "web_app_st" {
-  name                     = "${var.project_name}stfschallenge${var.environment}"
+  name                     = "stfschallenge${var.environment}"
   resource_group_name      = azurerm_resource_group.web_app_rg.name
   location                 = azurerm_resource_group.web_app_rg.location
   account_tier             = "Standard"
