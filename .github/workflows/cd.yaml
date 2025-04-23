@@ -38,4 +38,4 @@ jobs:
         run: terraform plan
       
       - name: Terraform Apply
-        run: terraform apply --auto-aproved
+        run: terraform apply --auto-approved
