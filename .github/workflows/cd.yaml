@@ -72,4 +72,4 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az storage blob upload-batch --account-name stfschallenge${{ github.ref_name }} --destination '$web' --source ./build --auth-mode login --overwrite true
+            az storage blob upload-batch --account-name stfschallenge${{ github.ref_name }} --destination '$web' --source ./build --auth-mode login
