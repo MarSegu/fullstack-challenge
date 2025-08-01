@@ -117,6 +117,3 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more details.
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=110&section=footer"/>
 </p>
 
-<p align="center">
-  <sub>Crafted with passion by <a href="https://github.com/MarSegu">MarSegu</a> • 2025</sub>
-</p>
